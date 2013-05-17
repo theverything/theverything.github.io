@@ -3,7 +3,7 @@ layout: post
 title: "this is a test of code blocks"
 date: 2013-05-17 16:44
 comments: true
-categories: 
+categories: ruby
 ---
 Check out my fizzbuzz solution.
 ``` ruby FizzBuzz.rb
