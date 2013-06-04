@@ -96,7 +96,7 @@ Now we create the forms to handle our credit card data in our `home/index.html.e
   </script>
 <% end %>
 ```
-Here we use the `form_tag` instead of the normal `form_for_tag` because we are using Stripe checkout to handle our credit card data and submit the form. We also use a `hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.
+Here we use the `form_tag` instead of the normal `form_for` because we are using Stripe checkout to handle our credit card data and submit the form. We also use a `hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.
 
 Thats it! You can now sign users up for subscriptions using Stripe.
 
