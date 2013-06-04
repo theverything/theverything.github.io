@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Fun with Stripe"
+title: "My Code Fellows Project: Fun with Stripe"
 date: 2013-06-03 16:13
 comments: true
 categories: rails stripe
@@ -100,7 +100,9 @@ Here we use the `form_tag` instead of the normal `form_for` because we are using
 
 Thats it! You can now sign users up for subscriptions using Stripe.
 
-The source can be found [here][railsapp] and a video of me showing off the app can be found [here][appvid].
+The source can be found [here][railsapp] and a here is a video of me showing off the app.
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
 
 
 
@@ -108,5 +110,4 @@ The source can be found [here][railsapp] and a video of me showing off the app c
 [codefellows]: https://www.codefellows.org/
 [stripedoc]: https://stripe.com/docs
 [railsapp]: https://github.com/theverything/rails_stripe_tut
-[appvid]: http://www.youtube.com/watch?v=zf-17GHWNR4
 [dotenv]: https://github.com/bkeepers/dotenv
