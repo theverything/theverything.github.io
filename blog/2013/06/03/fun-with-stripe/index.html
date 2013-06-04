@@ -6,7 +6,7 @@
 	<script data-cfasync="false" type="text/javascript" src="//use.typekit.net/axj3cfp.js"></script>
 	<script data-cfasync="false" type="text/javascript">try{Typekit.load();}catch(e){}</script>
 	<meta charset="utf-8">
-	<title>Fun with Stripe  | Jeffrey Horn</title>
+	<title>My Code Fellows Project: Fun with Stripe  | Jeffrey Horn</title>
 
 <meta name="author" content="Jeffrey Horn">
 
@@ -57,6 +57,30 @@ $(document).ready(
 );
 </script>
 	
+<script language="Javascript" type="text/javascript">
+$(function() {
+    var $allVideos = $("iframe[src^='http://player.vimeo.com'], iframe[src^='http://www.youtube.com'], object, embed"),
+    $fluidEl = $("figure");
+  $allVideos.each(function() {
+    $(this)
+      // jQuery .data does not work on object/embed elements
+      .attr('data-aspectRatio', this.height / this.width)
+      .removeAttr('height')
+      .removeAttr('width');
+  });
+  $(window).resize(function() {
+    var newWidth = $fluidEl.width();
+    $allVideos.each(function() {
+      var $el = $(this);
+      $el
+          .width(newWidth)
+          .height(newWidth * $el.attr('data-aspectRatio'));
+    });
+  }).resize();
+});
+</script>
+
+	
 </head>
 
 
@@ -97,7 +121,7 @@ $(document).ready(
 </header>
 
 	<div id="content" class="inner"><article class="post">
-	<h2 class="title">Fun With Stripe</h2>
+	<h2 class="title">My Code Fellows Project: Fun With Stripe</h2>
 	<div class="entry-content"><p>I recently got to play around with <a href="https://stripe.com/">Stripe</a> in my first big class project for <a href="https://www.codefellows.org/">Code Fellows</a>. I have to say I was a little scared that I might be in over my head, but after working through a couple sample apps using Stripe and following the <a href="https://stripe.com/docs">awesome docs</a> on the Stripe site I felt a little more at ease.</p>
 
 <p>To help anyone else looking to get started with Stripe I thought I would share how I used it in my app to create customers with subscriptions.</p>
@@ -258,7 +282,12 @@ $(document).ready(
 
 <p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
 
-<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a video of me showing off the app can be found <a href="http://www.youtube.com/watch?v=zf-17GHWNR4">here</a>.</p>
+<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a here is a video of me showing off the app.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
+
+
+
 </div>
 
 

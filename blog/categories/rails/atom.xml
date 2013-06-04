@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Jeffrey Horn]]></title>
   <link href="http://theverything.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://theverything.github.io/"/>
-  <updated>2013-06-04T10:35:37-07:00</updated>
+  <updated>2013-06-04T12:11:44-07:00</updated>
   <id>http://theverything.github.io/</id>
   <author>
     <name><![CDATA[Jeffrey Horn]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Fun with Stripe]]></title>
+    <title type="html"><![CDATA[My Code Fellows Project: Fun with Stripe]]></title>
     <link href="http://theverything.github.io/blog/2013/06/03/fun-with-stripe/"/>
     <updated>2013-06-03T16:13:00-07:00</updated>
     <id>http://theverything.github.io/blog/2013/06/03/fun-with-stripe</id>
@@ -128,7 +128,12 @@ Here we use the</code>form_tag<code>instead of the normal</code>form_for<code>be
 
 <p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
 
-<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a video of me showing off the app can be found <a href="http://www.youtube.com/watch?v=zf-17GHWNR4">here</a>.</p>
+<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a here is a video of me showing off the app.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
+
+
+
 ]]></content>
   </entry>
   

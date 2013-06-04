@@ -57,6 +57,30 @@ $(document).ready(
 );
 </script>
 	
+<script language="Javascript" type="text/javascript">
+$(function() {
+    var $allVideos = $("iframe[src^='http://player.vimeo.com'], iframe[src^='http://www.youtube.com'], object, embed"),
+    $fluidEl = $("figure");
+  $allVideos.each(function() {
+    $(this)
+      // jQuery .data does not work on object/embed elements
+      .attr('data-aspectRatio', this.height / this.width)
+      .removeAttr('height')
+      .removeAttr('width');
+  });
+  $(window).resize(function() {
+    var newWidth = $fluidEl.width();
+    $allVideos.each(function() {
+      var $el = $(this);
+      $el
+          .width(newWidth)
+          .height(newWidth * $el.attr('data-aspectRatio'));
+    });
+  }).resize();
+});
+</script>
+
+	
 </head>
 
 
@@ -104,7 +128,7 @@ $(document).ready(
 		
 		<a href="/blog/2013/06/03/fun-with-stripe/">
 		
-			Fun With Stripe</a>
+			My Code Fellows Project: Fun With Stripe</a>
 	</h2>
 	<div class="entry-content">
 		<p>I recently got to play around with <a href="https://stripe.com/">Stripe</a> in my first big class project for <a href="https://www.codefellows.org/">Code Fellows</a>. I have to say I was a little scared that I might be in over my head, but after working through a couple sample apps using Stripe and following the <a href="https://stripe.com/docs">awesome docs</a> on the Stripe site I felt a little more at ease.</p>
@@ -267,7 +291,12 @@ $(document).ready(
 
 <p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
 
-<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a video of me showing off the app can be found <a href="http://www.youtube.com/watch?v=zf-17GHWNR4">here</a>.</p>
+<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a here is a video of me showing off the app.</p>
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
+
+
+
 
 		
 		

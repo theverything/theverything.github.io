@@ -10,7 +10,7 @@
 
 <meta name="author" content="Jeffrey Horn">
 
-<meta name="description" content=" 2013 Fun with Stripe Jun 3 rails, stripe "> <meta name="keywords" content="">
+<meta name="description" content=" 2013 My Code Fellows Project: Fun with Stripe Jun 3 rails, stripe "> <meta name="keywords" content="">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -56,6 +56,30 @@ $(document).ready(
   }
 );
 </script>
+	
+<script language="Javascript" type="text/javascript">
+$(function() {
+    var $allVideos = $("iframe[src^='http://player.vimeo.com'], iframe[src^='http://www.youtube.com'], object, embed"),
+    $fluidEl = $("figure");
+  $allVideos.each(function() {
+    $(this)
+      // jQuery .data does not work on object/embed elements
+      .attr('data-aspectRatio', this.height / this.width)
+      .removeAttr('height')
+      .removeAttr('width');
+  });
+  $(window).resize(function() {
+    var newWidth = $fluidEl.width();
+    $allVideos.each(function() {
+      var $el = $(this);
+      $el
+          .width(newWidth)
+          .height(newWidth * $el.attr('data-aspectRatio'));
+    });
+  }).resize();
+});
+</script>
+
 	
 </head>
 
@@ -105,7 +129,7 @@ $(document).ready(
 	<section class="archives"><h1 class="year">2013</h1>
 
 <article>
-	<h2 class="title"><a href="/blog/2013/06/03/fun-with-stripe/">Fun with Stripe</a></h2>
+	<h2 class="title"><a href="/blog/2013/06/03/fun-with-stripe/">My Code Fellows Project: Fun with Stripe</a></h2>
 	<div class="meta">
 		<span class="date">Jun  3</span>
 		<span class="tags">
