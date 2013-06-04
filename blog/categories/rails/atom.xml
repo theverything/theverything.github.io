@@ -4,7 +4,7 @@
   <title><![CDATA[Category: rails | Jeffrey Horn]]></title>
   <link href="http://theverything.github.io/blog/categories/rails/atom.xml" rel="self"/>
   <link href="http://theverything.github.io/"/>
-  <updated>2013-06-03T17:56:00-07:00</updated>
+  <updated>2013-06-04T10:35:37-07:00</updated>
   <id>http://theverything.github.io/</id>
   <author>
     <name><![CDATA[Jeffrey Horn]]></name>
@@ -124,7 +124,7 @@ data-image="/128x128.png"&gt;
 <p>  </script>
 &lt;% end %>
 <code>``
-Here we use the</code>form_tag<code>instead of the normal</code>form_for_tag<code>because we are using Stripe checkout to handle our credit card data and submit the form. We also use a</code>hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.</p>
+Here we use the</code>form_tag<code>instead of the normal</code>form_for<code>because we are using Stripe checkout to handle our credit card data and submit the form. We also use a</code>hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.</p>
 
 <p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
 

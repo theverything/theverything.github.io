@@ -263,7 +263,7 @@ $(document).ready(
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here we use the <code>form_tag</code> instead of the normal <code>form_for_tag</code> because we are using Stripe checkout to handle our credit card data and submit the form. We also use a <code>hidden_field_tag</code> to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.</p>
+<p>Here we use the <code>form_tag</code> instead of the normal <code>form_for</code> because we are using Stripe checkout to handle our credit card data and submit the form. We also use a <code>hidden_field_tag</code> to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.</p>
 
 <p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
 
