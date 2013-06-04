@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: rails | Jeffrey Horn]]></title>
+  <link href="http://theverything.github.io/blog/categories/rails/atom.xml" rel="self"/>
+  <link href="http://theverything.github.io/"/>
+  <updated>2013-06-03T17:56:00-07:00</updated>
+  <id>http://theverything.github.io/</id>
+  <author>
+    <name><![CDATA[Jeffrey Horn]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Fun with Stripe]]></title>
+    <link href="http://theverything.github.io/blog/2013/06/03/fun-with-stripe/"/>
+    <updated>2013-06-03T16:13:00-07:00</updated>
+    <id>http://theverything.github.io/blog/2013/06/03/fun-with-stripe</id>
+    <content type="html"><![CDATA[<p>I recently got to play around with <a href="https://stripe.com/">Stripe</a> in my first big class project for <a href="https://www.codefellows.org/">Code Fellows</a>. I have to say I was a little scared that I might be in over my head, but after working through a couple sample apps using Stripe and following the <a href="https://stripe.com/docs">awesome docs</a> on the Stripe site I felt a little more at ease.</p>
+
+<p>To help anyone else looking to get started with Stripe I thought I would share how I used it in my app to create customers with subscriptions.</p>
+
+<p>First off head on over to the Stripe site and create an account. Your going to need your test API keys and you are going to need to make a couple plans for your customers to subscribe to.</p>
+
+<p>Next you&rsquo;re going to need to add Stripe to your Gemfile.</p>
+
+<pre><code>gem 'stripe', :git =&gt; 'https://github.com/stripe/stripe-ruby'
+</code></pre>
+
+<p>After updating our Gemfile we will create a file in our rails <code>config/initializers</code> folder we will call it <code>stripe.rb</code>. Here we will set up Stripe to use our API keys.</p>
+
+<p>``` ruby stripe.rb
+Rails.configuration.stripe = {
+:publishable_key => ENV[&lsquo;PUBLISHABLE_KEY&rsquo;],
+:secret_key      => ENV[&lsquo;SECRET_KEY&rsquo;]
+}</p>
+
+<p>Stripe.api_key = Rails.configuration.stripe[:secret_key]
+<code>``
+Here we set our</code>:publishable_key<code>and our</code>:secret_key<code>using environment variables (checkout [dotenv][dotenv]) and then set our</code>Stripe.api_key`.</p>
+
+<p>For the Subscription resources we will use a scaffold generator <code>rails g scaffold subscription email:string plan_id:integer stripe_token:string</code> and then we&rsquo;ll create a home contoller for our forms to live <code>rails g contoller home index</code>.</p>
+
+<p>In our subscriptions controller we will put the code to save a subscription to our database and then the code to create a new customer and assign them to a plan with Stripe.</p>
+
+<p>``` ruby subscriptions_controller.rb
+def create
+  # get params from form
+  email = params[:email]
+  plan_id = params[:plan_id]
+  token = params[:stripeToken]</p>
+
+<p>  # create a new subscription in the database
+  s =  Subscription.new
+  s.email = email
+  s.plan_id = plan_id
+  s.stripe_token = token
+  s.save</p>
+
+<p>  # create a new customer and associate them with a subscription plan
+  customer = Stripe::Customer.create(</p>
+
+<pre><code>:card =&gt; token,
+:plan =&gt; plan_id,
+:email =&gt; email
+</code></pre>
+
+<p>  )
+  flash[:notice] = &ldquo;You have created a subscription.&rdquo;
+  redirect_to subscriptions_path</p>
+
+<h1>handle errors</h1>
+
+<p>rescue Stripe::CardError => e
+  flash[:error] = e.message
+  redirect_to root_path
+end
+```
+At the top of the create method we get the params from our submitted form. Under that we create a new Subscription and pass in the params. Then we create a new customer with Stripe and associate them with the corresponding plan. Finally we handle any card errors that Stripe might return.</p>
+
+<p>Now we create the forms to handle our credit card data in our <code>home/index.html.erb</code>.</p>
+
+<p>``` ruby index.html.erb</p>
+
+<h1>Gold Subscription</h1>
+
+
+<p>&lt;%= form_tag subscriptions_path do %>
+  &lt;%= label_tag :email %>
+  &lt;%= text_field_tag :email %><br>
+  &lt;%= hidden_field_tag :plan_id, 101 %>
+  &lt;script</p>
+
+<pre><code>src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+data-key=&lt;%= Rails.configuration.stripe[:publishable_key] %&gt;
+data-name="Stripe Tutorial"
+data-description="Gold"
+data-currency="usd"
+data-image="/128x128.png"&gt;
+</code></pre>
+
+<p>  </script>
+&lt;% end %></p>
+
+<h1>Silver Subscription</h1>
+
+
+<p>&lt;%= form_tag subscriptions_path do %>
+  &lt;%= label_tag :email %>
+  &lt;%= text_field_tag :email %><br>
+  &lt;%= hidden_field_tag :plan_id, 102 %>
+  &lt;script</p>
+
+<pre><code>src="https://checkout.stripe.com/v2/checkout.js" class="stripe-button"
+data-key=&lt;%= Rails.configuration.stripe[:publishable_key] %&gt;
+data-name="Stripe Tutorial"
+data-description="Silver"
+data-currency="usd"
+data-image="/128x128.png"&gt;
+</code></pre>
+
+<p>  </script>
+&lt;% end %>
+<code>``
+Here we use the</code>form_tag<code>instead of the normal</code>form_for_tag<code>because we are using Stripe checkout to handle our credit card data and submit the form. We also use a</code>hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.</p>
+
+<p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
+
+<p>The source can be found <a href="https://github.com/theverything/rails_stripe_tut">here</a> and a video of me showing off the app can be found <a href="http://www.youtube.com/watch?v=zf-17GHWNR4">here</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>
