@@ -16,7 +16,7 @@ Next, add Stripe to your Gemfile.
 
     gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-After updating the Gemfile, we will create a file in our rails `config/initializers` folder. Let's call it `stripe.rb`. Here, we will set up Stripe to use our API keys.
+After updating the Gemfile, we will create a file in our rails `config/initializers` folder. Let's call it `stripe.rb`. Here, we will set up our app to use our Stripe API keys.
 
 ``` ruby stripe.rb
 Rails.configuration.stripe = {
@@ -26,7 +26,7 @@ Rails.configuration.stripe = {
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
 ```
-Here, we set the `:publishable_key` and the `:secret_key` using environment variables (checkout [dotenv][dotenv]). Then we configure Stripe to use our secret key whenever we call out to their API `Stripe.api_key`.
+In our newly created file, we set the `:publishable_key` and the `:secret_key` using environment variables (checkout [dotenv][dotenv]). Then we configure Stripe to use our secret key whenever we call out to their API.
 
 For the Subscription resources, we will use a scaffold generator `rails g scaffold subscription email:string plan_id:integer stripe_token:string` and then we'll create a home contoller for our forms to live `rails g contoller home index`.
 
@@ -100,7 +100,7 @@ Here, we use the `form_tag` instead of the normal `form_for` because we are usin
 
 Thats it! You can now sign users up for subscriptions using Stripe.
 
-The source for this sample app can be found on [GitHub][railsapp] and below is a video of me demoing the app I mode for Code Fellows.
+The source for this sample app can be found on [GitHub][railsapp] and below is a video of me demoing the app I made for Code Fellows.
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
 
