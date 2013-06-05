@@ -8,15 +8,15 @@ categories: rails stripe
 
 I recently got to play around with [Stripe][stripe] in my first big class project for [Code Fellows][codefellows]. I have to say I was a little scared that I might be in over my head, but after working through a couple sample apps using Stripe and following the [awesome docs][stripedoc] on the Stripe site I felt a little more at ease.
 
-To help anyone else looking to get started with Stripe I thought I would share how I used it in my app to create customers with subscriptions.
+To help anyone else looking to get started with Stripe, I thought I would share how I used it in my app to create customers with subscriptions.
 
-First off head on over to the Stripe site and create an account. You're going to need your test API keys and you are going to need to make a couple plans for your customers to subscribe to.
+First off, head on over to the Stripe site and create an account. You're going to need your test API keys and then make a couple plans for your customers to subscribe to.
 
-Next you're going to need to add Stripe to your Gemfile.
+Next, add Stripe to your Gemfile.
 
     gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-After updating the Gemfile we will create a file in our rails `config/initializers` folder let's call it `stripe.rb`. Here we will set up Stripe to use our API keys.
+After updating the Gemfile, we will create a file in our rails `config/initializers` folder. Let's call it `stripe.rb`. Here, we will set up Stripe to use our API keys.
 
 ``` ruby stripe.rb
 Rails.configuration.stripe = {
@@ -26,11 +26,11 @@ Rails.configuration.stripe = {
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
 ```
-Here we set the `:publishable_key` and the `:secret_key` using environment variables (checkout [dotenv][dotenv]), then we configure Stripe to use our secret key when ever we call out to their API `Stripe.api_key`.
+Here, we set the `:publishable_key` and the `:secret_key` using environment variables (checkout [dotenv][dotenv]). Then we configure Stripe to use our secret key whenever we call out to their API `Stripe.api_key`.
 
-For the Subscription resources we will use a scaffold generator `rails g scaffold subscription email:string plan_id:integer stripe_token:string` and then we'll create a home contoller for our forms to live `rails g contoller home index`.
+For the Subscription resources, we will use a scaffold generator `rails g scaffold subscription email:string plan_id:integer stripe_token:string` and then we'll create a home contoller for our forms to live `rails g contoller home index`.
 
-In our subscriptions controller we will put the code to save a subscription to our database and then the code to create a new customer and assign them to a plan with Stripe.
+In our subscriptions controller, we will put the code to save a subscription to our database and then the code to create a new customer and assign them to a plan with Stripe.
 
 ``` ruby subscriptions_controller.rb
 def create
@@ -61,7 +61,7 @@ rescue Stripe::CardError => e
   redirect_to root_path
 end
 ```
-At the top of the create method we get the params from our submitted form. Under that we create a new Subscription and pass in the params. Then we create a new customer with Stripe and associate them with the corresponding plan. Finally we handle any card errors that Stripe might return.
+At the top of the create method we get the params from our submitted form. Under that, we create a new Subscription and pass in the params. Then we create a new customer with Stripe and associate them with the corresponding plan. Finally, we handle any card errors that Stripe might return.
 
 Now we create the forms to handle our credit card data in our `home/index.html.erb`.
 
@@ -96,7 +96,7 @@ Now we create the forms to handle our credit card data in our `home/index.html.e
   </script>
 <% end %>
 ```
-Here we use the `form_tag` instead of the normal `form_for` because we are using Stripe checkout to handle our credit card data and submit the form. We also use a `hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.
+Here, we use the `form_tag` instead of the normal `form_for` because we are using Stripe checkout to handle our credit card data and submit the form. We also use a `hidden_field_tag` to hold the id for our different plans. The plan ids correspond to the ids we set up while creating plans from the Stripe dashboard.
 
 Thats it! You can now sign users up for subscriptions using Stripe.
 
