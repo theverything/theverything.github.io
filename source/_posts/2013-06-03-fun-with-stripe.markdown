@@ -10,13 +10,13 @@ I recently got to play around with [Stripe][stripe] in my first big class projec
 
 To help anyone else looking to get started with Stripe I thought I would share how I used it in my app to create customers with subscriptions.
 
-First off head on over to the Stripe site and create an account. Your going to need your test API keys and you are going to need to make a couple plans for your customers to subscribe to.
+First off head on over to the Stripe site and create an account. You're going to need your test API keys and you are going to need to make a couple plans for your customers to subscribe to.
 
 Next you're going to need to add Stripe to your Gemfile.
 
     gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
-After updating our Gemfile we will create a file in our rails `config/initializers` folder we will call it `stripe.rb`. Here we will set up Stripe to use our API keys.
+After updating the Gemfile we will create a file in our rails `config/initializers` folder let's call it `stripe.rb`. Here we will set up Stripe to use our API keys.
 
 ``` ruby stripe.rb
 Rails.configuration.stripe = {
@@ -26,7 +26,7 @@ Rails.configuration.stripe = {
 
 Stripe.api_key = Rails.configuration.stripe[:secret_key]
 ```
-Here we set our `:publishable_key` and our `:secret_key` using environment variables (checkout [dotenv][dotenv]) and then set our `Stripe.api_key`.
+Here we set the `:publishable_key` and the `:secret_key` using environment variables (checkout [dotenv][dotenv]), then we configure Stripe to use our secret key when ever we call out to their API `Stripe.api_key`.
 
 For the Subscription resources we will use a scaffold generator `rails g scaffold subscription email:string plan_id:integer stripe_token:string` and then we'll create a home contoller for our forms to live `rails g contoller home index`.
 
