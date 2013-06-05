@@ -100,7 +100,7 @@ Here we use the `form_tag` instead of the normal `form_for` because we are using
 
 Thats it! You can now sign users up for subscriptions using Stripe.
 
-The source can be found [here][railsapp] and a here is a video of me showing off the app.
+The source for this sample app can be found on [GitHub][railsapp] and below is a video of me demoing the app I mode for Code Fellows.
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
 
