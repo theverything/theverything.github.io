@@ -133,7 +133,7 @@ $(function() {
 <pre><code>gem 'stripe', :git =&gt; 'https://github.com/stripe/stripe-ruby'
 </code></pre>
 
-<p>After updating the Gemfile, we will create a file in our rails <code>config/initializers</code> folder. Let&rsquo;s call it <code>stripe.rb</code>. Here, we will set up Stripe to use our API keys.</p>
+<p>After updating the Gemfile, we will create a file in our rails <code>config/initializers</code> folder. Let&rsquo;s call it <code>stripe.rb</code>. Here, we will set up our app to use our Stripe API keys.</p>
 
 <figure class='code'><figcaption><span>stripe.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -150,7 +150,7 @@ $(function() {
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here, we set the <code>:publishable_key</code> and the <code>:secret_key</code> using environment variables (checkout <a href="https://github.com/bkeepers/dotenv">dotenv</a>). Then we configure Stripe to use our secret key whenever we call out to their API <code>Stripe.api_key</code>.</p>
+<p>In our newly created file, we set the <code>:publishable_key</code> and the <code>:secret_key</code> using environment variables (checkout <a href="https://github.com/bkeepers/dotenv">dotenv</a>). Then we configure Stripe to use our secret key whenever we call out to their API.</p>
 
 <p>For the Subscription resources, we will use a scaffold generator <code>rails g scaffold subscription email:string plan_id:integer stripe_token:string</code> and then we&rsquo;ll create a home contoller for our forms to live <code>rails g contoller home index</code>.</p>
 
@@ -282,7 +282,7 @@ $(function() {
 
 <p>Thats it! You can now sign users up for subscriptions using Stripe.</p>
 
-<p>The source for this sample app can be found on <a href="https://github.com/theverything/rails_stripe_tut">GitHub</a> and below is a video of me demoing the app I mode for Code Fellows.</p>
+<p>The source for this sample app can be found on <a href="https://github.com/theverything/rails_stripe_tut">GitHub</a> and below is a video of me demoing the app I made for Code Fellows.</p>
 
 <iframe width="560" height="315" src="http://www.youtube.com/embed/zf-17GHWNR4" frameborder="0" allowfullscreen></iframe>
 
