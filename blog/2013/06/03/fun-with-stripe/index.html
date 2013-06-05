@@ -126,14 +126,14 @@ $(function() {
 
 <p>To help anyone else looking to get started with Stripe I thought I would share how I used it in my app to create customers with subscriptions.</p>
 
-<p>First off head on over to the Stripe site and create an account. Your going to need your test API keys and you are going to need to make a couple plans for your customers to subscribe to.</p>
+<p>First off head on over to the Stripe site and create an account. You&rsquo;re going to need your test API keys and you are going to need to make a couple plans for your customers to subscribe to.</p>
 
 <p>Next you&rsquo;re going to need to add Stripe to your Gemfile.</p>
 
 <pre><code>gem 'stripe', :git =&gt; 'https://github.com/stripe/stripe-ruby'
 </code></pre>
 
-<p>After updating our Gemfile we will create a file in our rails <code>config/initializers</code> folder we will call it <code>stripe.rb</code>. Here we will set up Stripe to use our API keys.</p>
+<p>After updating the Gemfile we will create a file in our rails <code>config/initializers</code> folder let&rsquo;s call it <code>stripe.rb</code>. Here we will set up Stripe to use our API keys.</p>
 
 <figure class='code'><figcaption><span>stripe.rb</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -150,7 +150,7 @@ $(function() {
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>Here we set our <code>:publishable_key</code> and our <code>:secret_key</code> using environment variables (checkout <a href="https://github.com/bkeepers/dotenv">dotenv</a>) and then set our <code>Stripe.api_key</code>.</p>
+<p>Here we set the <code>:publishable_key</code> and the <code>:secret_key</code> using environment variables (checkout <a href="https://github.com/bkeepers/dotenv">dotenv</a>), then we configure Stripe to use our secret key when ever we call out to their API <code>Stripe.api_key</code>.</p>
 
 <p>For the Subscription resources we will use a scaffold generator <code>rails g scaffold subscription email:string plan_id:integer stripe_token:string</code> and then we&rsquo;ll create a home contoller for our forms to live <code>rails g contoller home index</code>.</p>
 
