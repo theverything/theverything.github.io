@@ -4,7 +4,7 @@
   <title><![CDATA[Jeffrey Horn]]></title>
   <link href="http://theverything.github.io/atom.xml" rel="self"/>
   <link href="http://theverything.github.io/"/>
-  <updated>2013-06-10T22:58:21-07:00</updated>
+  <updated>2013-08-30T18:01:04-07:00</updated>
   <id>http://theverything.github.io/</id>
   <author>
     <name><![CDATA[Jeffrey Horn]]></name>
@@ -12,6 +12,35 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Ember 1.0 Release: 5 Things Every Dev Needs to Know]]></title>
+    <link href="http://theverything.github.io/blog/2013/08/30/ember-1-dot-0-release-5-things-every-dev-needs-to-know/"/>
+    <updated>2013-08-30T17:45:00-07:00</updated>
+    <id>http://theverything.github.io/blog/2013/08/30/ember-1-dot-0-release-5-things-every-dev-needs-to-know</id>
+    <content type="html"><![CDATA[<h4>The newest version of Ember.js is set to launch tomorrow (8/30/13). Here are some of the things you need to know.</h4>
+
+<h3>Ember App Kit</h3>
+
+<p>Fire up a new Ember app easier than ever. Ember App Kit gives you a testing framework, Grunt tasks, and scaffold generators. This is going to make every Ember developers&#8217; life significantly easier. In the future this will be rolled into Ember.js core. <a href="https://github.com/stefanpenner/ember-app-kit">Link to the Ember App Kit</a>.</p>
+
+<h3>Ember Inspector</h3>
+
+<p>Already in the Chrome App store, the Ember Inspector extension will let you see what your Ember app is doing in production or your development environment. You can also use the inspector on other site&rsquo;s Ember apps as well. Three cheers for easier debugging of your Ember app! <a href="https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi">Link to the Ember Inspector</a>.</p>
+
+<h3>Ember Components</h3>
+
+<p>Lets you create your own application-specific HTML tags. W3C is doing something similar with Web Components and the Ember team is trying to stick to the standard set by W3C. In the future when the standard is set you will be able to migrate to Web Components with ease. <a href="http://emberjs.com/guides/components/">Read more about Ember Components in the official docs</a>.</p>
+
+<h3>1,733 lines of new documentation</h3>
+
+<p>In the past, Ember documentation has been painfully lacking. With the addition of massive amounts of new documentation, learning to develop Ember should be a lot quicker. <a href="http://emberjs.com/guides/">Link to the Ember guides</a>.</p>
+
+<h3>Tentative  Ember Data 1.0 beta with release of Ember 1.0</h3>
+
+<p>Now that Ember.js is about to go 1.0, the core team is turning their focus to Ember Data. They are rebooting Ember Data with the jj-abrams branch. There has been 32 commits already this week. <a href="https://github.com/emberjs/data/commits/jj-abrams">Follow along with their progress here</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[My Code Fellows Project: Fun with Stripe]]></title>
