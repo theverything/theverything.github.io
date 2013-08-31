@@ -6,3 +6,19 @@ comments: true
 sharing: true
 footer: true
 ---
+<div class="row">
+  <div class="six">
+    <div data-repo="jquery-boilerplate/boilerplate" class="github-box-wrap"></div>
+  </div>
+  <div class="six">
+    <div data-repo="jquery-boilerplate/boilerplate" class="github-box-wrap"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="six">
+    <div data-repo="jquery-boilerplate/boilerplate" class="github-box-wrap"></div>
+  </div>
+  <div class="six">
+    <div data-repo="jquery-boilerplate/boilerplate" class="github-box-wrap"></div>
+  </div>
+</div>
